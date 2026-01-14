@@ -1,0 +1,67 @@
+<div class="hero">
+    <h1>Welcome to <%= channelName %></h1>
+    <p class="subtitle">Creating amazing content for everyone to enjoy!</p>
+    
+    <div class="stats">
+        <div class="stat-item">
+            <i class="fas fa-users"></i>
+            <h3 id="liveSubCount">Loading...</h3>
+            <p>Live Subscribers</p>
+        </div>
+        <div class="stat-item">
+            <i class="fas fa-video"></i>
+            <h3>50+</h3>
+            <p>Videos</p>
+        </div>
+        <div class="stat-item">
+            <i class="fas fa-eye"></i>
+            <h3>100K+</h3>
+            <p>Views</p>
+        </div>
+    </div>
+    
+    <a href="<%= channelUrl %>" target="_blank" class="cta-button">
+        <i class="fab fa-youtube"></i> Subscribe Now
+    </a>
+</div>
+
+<section class="subscribe-section">
+    <h2>Never Miss an Upload!</h2>
+    <p>Subscribe and hit the bell icon to get notified about new videos.</p>
+    <a href="<%= channelUrl %>" target="_blank" class="cta-button">
+        <i class="fab fa-youtube"></i> Go to Channel
+    </a>
+</section>
+
+<section class="support-section">
+    <h2>Support Our Channel</h2>
+    <p>Help us create more amazing content!</p>
+    
+    <div class="support-grid">
+        <% supportOptions.forEach(option => { %>
+        <div class="support-card">
+            <i class="fas fa-<%= option.icon %>"></i>
+            <h3><%= option.name %></h3>
+            <p><%= option.description %></p>
+        </div>
+        <% }); %>
+    </div>
+</section>
+
+<script>
+    // Update live subscriber count on homepage
+    async function updateHomeStats() {
+        try {
+            const response = await fetch('/api/subscribers');
+            const data = await response.json();
+            const subElement = document.getElementById('liveSubCount');
+            if (subElement) {
+                subElement.textContent = data.subscribers.toLocaleString();
+            }
+        } catch (error) {
+            console.error('Failed to update stats:', error);
+        }
+    }
+    
+    document.addEventListener('DOMContentLoaded', updateHomeStats);
+</script>
