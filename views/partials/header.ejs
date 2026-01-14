@@ -1,0 +1,42 @@
+<header>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="/" class="logo">
+                <i class="fab fa-youtube"></i>
+                <span><%= channelName %></span>
+            </a>
+            <div class="live-sub-count">
+                <i class="fas fa-users"></i>
+                <span id="subCount">Loading...</span>
+            </div>
+        </div>
+        
+        <div class="nav-menu">
+            <a href="/" class="nav-link <%= title === 'Home' ? 'active' : '' %>">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="/about" class="nav-link <%= title === 'About Me' ? 'active' : '' %>">
+                <i class="fas fa-user"></i> About Me
+            </a>
+            <a href="/history" class="nav-link <%= title === 'History' ? 'active' : '' %>">
+                <i class="fas fa-history"></i> History
+            </a>
+            <a href="/merch" class="nav-link <%= title === 'Merch Store' ? 'active' : '' %>">
+                <i class="fas fa-shopping-bag"></i> Merch Store
+            </a>
+            <a href="/contact" class="nav-link <%= title === 'Contact' ? 'active' : '' %>">
+                <i class="fas fa-envelope"></i> Contact
+            </a>
+            <a href="/support" class="nav-link support-btn">
+                <i class="fas fa-heart"></i> Support Us
+            </a>
+            <a href="/dashboard" class="nav-link dashboard-btn">
+                <i class="fas fa-cog"></i> Dashboard
+            </a>
+        </div>
+        
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+</header>
